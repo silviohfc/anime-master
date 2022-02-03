@@ -3,6 +3,8 @@ const path = require("path");
 const { Client, Collection, Intents } = require("discord.js");
 const { token } = require("./config.js");
 
+const Animes = require("./models/anime");
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
@@ -18,6 +20,7 @@ for (const file of commandFiles) {
 }
 
 client.once("ready", () => {
+  Animes.sync();
   console.log("Ready !");
 });
 
