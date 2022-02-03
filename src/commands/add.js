@@ -7,7 +7,7 @@ module.exports = {
     .setDescription("Add an anime to list!")
 
     .addStringOption((option) =>
-      option.setName("name").setDescription("The anime name").setRequired(true)
+      option.setName("name").setDescription("The anime name").setRequired(true),
     )
 
     .addStringOption((option) =>
@@ -17,7 +17,7 @@ module.exports = {
         .setRequired(true)
         .addChoice("Plan to Watch", "plan to watch")
         .addChoice("Watching", "watching")
-        .addChoice("Completed", "completed")
+        .addChoice("Completed", "completed"),
     ),
 
   async execute(interaction) {
@@ -29,7 +29,6 @@ module.exports = {
         name: animeName,
         status: animeStatus,
       });
-      console.log(anime);
       return interaction.reply(`Anime ${anime.dataValues.name} added.`);
     } catch (error) {
       if (error.name === "SequelizeUniqueConstraintError") {
